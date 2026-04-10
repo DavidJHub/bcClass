@@ -1,0 +1,15 @@
+simulated_mhd_paths:
+  - data/simulated/sample_001.mhd
+  - data/simulated/sample_002.mhd
+real_image_paths:
+  - data/real/patient_001.dcm
+
+pinn:
+  input_dim: 2
+  output_dim: 1
+  hidden_layers: 6
+  hidden_units: 128
+  activation: tanh
+  pde_weight: 1.0
+  data_weight: 1.0
+  boundary_weight: 1.0
