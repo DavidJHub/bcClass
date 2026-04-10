@@ -10,7 +10,7 @@ Create a staged pipeline that:
 2. Trains a Physics-Informed Neural Network (PINN) on the segmented Geant4 samples.
 3. Reads a real image and predicts/segments regions of interest using the PINN prior.
 
-This repository currently provides a **skeleton preset** (architecture + flow + stubs), not a production model.
+This repository currently provides a **preset architecture** where the MHD reader is implemented and the remaining modules are still stubs for iterative build-out.
 
 ## Skeleton architecture
 
@@ -30,7 +30,9 @@ Real image ---------------------------------> RealImageRoiInferencer.run()
 ## Project structure
 
 - `src/bcclass_pipeline/io/mhd_reader.py`:
-  placeholder Geant4 MHD loader.
+  implemented Geant4 MHD/RAW loader with header parsing and validation.
+- `docs/mhd_reader.md`:
+  detailed reader behavior, supported fields/types, and usage notes.
 - `src/bcclass_pipeline/segmentation/geant4_segmenter.py`:
   placeholder abnormality segmentation + auto-tagging.
 - `src/bcclass_pipeline/training/dataset.py`:
@@ -55,7 +57,7 @@ bcclass --geant4-root demo_geant4 --real-image real_case_001.png
 
 ## What is intentionally left for next iteration
 
-- Real MHD/RAW parsing and intensity normalization.
+- Production-grade preprocessing beyond basic MHD/RAW loading (normalization policy, orientation handling, resampling).
 - Actual segmentation and tagging logic for microcalcifications and abnormal tissue.
 - Physics loss construction (Beer-Lambert constraints, PDE residual terms, boundary conditions).
 - Adaptive collocation sampling, loss balancing, and full PINN training loop.
